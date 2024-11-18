@@ -8,7 +8,7 @@ class AuthRemoteDatasource{
 
   Future<Either<String, AuthResponseModel>> login(String email, String password) async {
     final response = await http.post(
-      Uri.parse('http://172.20.10.2:8000/api/login'),
+      Uri.parse('http://192.168.0.104:8000/api/login'),
       headers:{
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -20,7 +20,7 @@ class AuthRemoteDatasource{
     );
 
     if (response.statusCode == 200) {
-      return Right(AuthResponseModel.fromJson(response.body));
+      return Right(AuthResponseModel.fromJson(response.body ));
     } else {
       return Left(response.body);
     }
